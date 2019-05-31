@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Informações gerais da unidade</title>
+</head>
+<body>
+    <div class="row">
+        <div id="menu-esquerda" class="two columns">
+            <h6><strong>Informações</strong></h6>
+            <div class="row menu-left" id="identificacao"><img src="html/unidade/img/identificacao.png" />Identificação</div>
+            <div class="row menu-left" id="contato"><img src="html/unidade/img/contato.png" />Contato</div>
+            <div class="row menu-left" id="aluguel"><img src="html/unidade/img/aluguel.png" />Imóvel alugado</div>
+        </div>
+        <div id="base-formularios" class="six columns">identificação
+        </div>
+        <div id="menu-direita" class="three columns">
+            <div class="row">
+                <h6><strong>Moradores da sua unidade</strong></h6>
+                <div id="lista-moradores"></div>
+            </div><br/>
+        </div>
+    </div>
+
+<div id="form_identificacao" style="display: none">
+    <h6><strong>Identificação da unidade</strong></h6>
+    <form>
+        <div class="row">
+            <label for="nome">Nome completo do proprietário
+                <input class="u-full-width" type="text" placeholder="Informe o seu nome" id="nome">
+            </label>
+        </div>
+        <div class="row">
+            <label for="documento">Documento de identificação
+                <input class="u-full-width" type="text" placeholder="RG, CPF ou Passaporte" id="documento">
+            </label>
+        </div>
+        <div class="row two-columns">
+            <div class="three columns">
+                <label for="bloco">Bloco/Torre
+                    <input type="text" placeholder="Ex: A, 2" id="bloco">
+                </label>
+            </div>
+            <div class="two columns">
+                <label for="unidade">Unidade
+                    <input type="text" placeholder="Ex: A11" id="unidade">
+                </label>
+            </div>
+        </div>
+        <input class="button-primary" type="submit" value="Atualizar dados">
+
+    </form>
+</div>
+<div id="form_contato" style="display: none">
+    <form>
+        <div class="row">
+            <label for="telefone-residencial">Telefone residêncial
+                <input class="u-full-width" type="tel" placeholder="Informe o seu nome" id="telefone-residencial">
+            </label>
+        </div>
+        <div class="row">
+            <label for="telefone-celular">Telefone celular
+                <input class="u-full-width" type="tel" placeholder="RG, CPF ou Passaporte" id="telefone-celular">
+            </label>
+        </div>
+        <div class="row two-columns">
+            <div class="three columns">
+                <label for="bloco">Bloco/Torre
+                    <input type="text" placeholder="Ex: A, 2" id="bloco">
+                </label>
+            </div>
+            <div class="two columns">
+                <label for="unidade">Unidade
+                    <input type="text" placeholder="Ex: A11" id="unidade">
+                </label>
+            </div>
+        </div>
+        <input class="button-primary" type="submit" value="Atualizar dados">
+
+    </form>
+</div>
+<div id="form_aluguel" style="display: none"></div>
+
+</body>
+</html>
