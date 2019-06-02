@@ -129,6 +129,7 @@ function Exibelogin() {
  */
 let UsuarioLogado = function(user) {
 
+  console.clear();
   user.providerData.forEach(function (profile) {
     console.log("Sign-in provider: " + profile.providerId);
     console.log("  Provider-specific UID: " + profile.uid);
@@ -147,6 +148,13 @@ let UsuarioLogado = function(user) {
   document.getElementById('nomecompleto').textContent = user.displayName;
   document.getElementById('primeironome').textContent = user.displayName.split(' ')[0];
 
+  document.getElementById('nomecompleto').addEventListener("click", teste);
+
+  function teste() {
+    console.clear();
+    console.debug(this);
+  }
+
   if (user.photoURL) {
     var photoURL = user.photoURL;
     if ((photoURL.indexOf('googleusercontent.com') !== -1) || (photoURL.indexOf('ggpht.com') !== -1)) {
@@ -158,7 +166,6 @@ let UsuarioLogado = function(user) {
 
   new MainFeeds();
 };
-
 
 /**
  * Deletes the user's account.
@@ -177,23 +184,3 @@ var deleteAccount = function() {
     }
   });
 };
-
-
-/**
- * Initializes the app.
- */
-var initApp = function() {
-  document.getElementById('sign-in-with-redirect').addEventListener(
-      'click', signInWithRedirect);
-  document.getElementById('sign-in-with-popup').addEventListener(
-      'click', signInWithPopup);
-  document.getElementById('sign-out').addEventListener('click', function() {
-    firebase.auth().signOut();
-  });
-  document.getElementById('delete-account').addEventListener(
-      'click', function() {
-        deleteAccount();
-      });
-};
-
-//window.addEventListener('load', initApp);

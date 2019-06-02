@@ -3,28 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Perfil</title>
-    <style>
-        .fundo-perfil {
-            background-color: darkgrey;
-            min-height: 200px;
-        }
-    </style>
 </head>
 <body>
-    <div class="row">
-        <div class="eight columns">
-            <div class="fundo-perfil"></div>
-            <h4>Oberdan Brito</h4>
-            <h5>Proprietário da unidade 11-100</h5>
-            <p>Morador desde 15/02/2017</p>
-            <p>Histórico de acesso</p>
-        </div>
-        <div class="three columns">
+    <div class="three columns menulateral borderright">
+        <h6><strong>Informações pessoais</strong></h6>
+        <div id="lista-cadastros" class="lista-operacoes"></div>
+    </div>
+
+    <div id="artigos" class="four columns">
+        <!-- The above form looks like this -->
+        <form>
             <div class="row">
-                <h5>Moradores da sua unidade</h5>
-                <div id="lista-moradores"></div>
-            </div><br/>
-        </div>
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" class="u-full-width">
+            </div>
+            <div class="row">
+                <label for="torre">Nome da torre onde reside</label>
+                <select class="u-full-width" id="torre">
+                    <option value="1">Torre 1</option>
+                    <option value="2">Torre 2</option>
+                    <option value="3">Torre 3</option>
+                    <option value="4">Torre 4</option>
+                </select><br>
+                <span>Informe o nome do bloco/torre que descreve a sua unidade no condomínio</span>
+            </div>
+            <div class="row">
+                <label for="unidade">Número da unidade</label>
+                <input type="text" id="unidade" class="u-full-width"><br>
+                <span>Informe apenas os números que identificam a sua unidade</span>
+            </div>
+            <input class="button-primary" type="submit" value="Atualizar">
+        </form>
+    </div>
+    <div class="three columns menulateral borderleft u-pull-right">
+        <strong>Moradores da sua unidade</strong>
+        <div id="lista-moradores"></div>
     </div>
 </body>
 </html>

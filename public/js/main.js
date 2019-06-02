@@ -12,19 +12,17 @@ ui.disableAutoSignIn();
 
     let login = document.getElementById('login');
 
+
     firebase.auth().onAuthStateChanged(function (user) {
         loggedUser = user;
         if (user === null) {
 
             login.classList.add('visible');
             login.addEventListener('click', Exibelogin);
-
         } else {
             UsuarioLogado(user);
         }
     });
-
-
 
 
 })();
@@ -172,43 +170,10 @@ let SmartPortal = function () {
         });
     }
 
-/*
-    document.getElementById('formlogincancel').addEventListener('click', function () {
-        that.ExibirArtigos();
-    });
-*/
-
-    //TODO: o certo é login e não xlogin
-    /*document.getElementById('xlogin').addEventListener('click', function () {
-
-
-
-
-
-    });*/
-
-    /*$(function(){
-        let shrinkHeader = 100;
-        $(window).scroll(function() {
-            let scroll = getCurrentScroll();
-            if ( scroll >= shrinkHeader ) {
-                $('.header').addClass('shrink');
-            }
-            else {
-                $('.header').removeClass('shrink');
-            }
-        });
-        function getCurrentScroll() {
-            return window.pageYOffset || document.documentElement.scrollTop;
-        }
-    });*/
-
     this.ExibirArtigos = function () {
         new MainFeeds();
     };
 
     that.ExibirArtigos();
-
-    //new FormPerfil();
 
 };

@@ -4,6 +4,20 @@ html, body {
     width: 100%;
 }
 
+form .row {
+    margin-bottom: 2rem;
+}
+
+input, textarea, select, fieldset {
+   margin-bottom: 0;
+}
+
+form span {
+    color: #555;
+    font-size: 0.85em;
+    margin-bottom: 2em;
+}
+
 .linha-cor {
     display:block;
     position:fixed;
@@ -45,6 +59,7 @@ html, body {
 #artigos {
     overflow-y: auto;
     height: 90%;
+    margin: 1%;
 }
 
 #ligue {
@@ -77,6 +92,10 @@ html, body {
 .toolbar span {
     align-items: center;
     font-size: 0.8em;
+}
+
+.lista-operacoes {
+    margin: 1% 1% 2rem;
 }
 
 .menu-left {
@@ -133,6 +152,7 @@ html, body {
     border-bottom: 1px solid #eee;
     margin: 0;
     padding: 0;
+    cursor: pointer;
 }
 
 .menu-unidade {
@@ -165,8 +185,15 @@ html, body {
     background-color: #fff;
 }
 
-#menu-esquerda {
-    border-right: 1px solid rgba(202, 202, 202, 0.2);
+.menulateral {
     font-size: 0.8em;
-    padding-right: 1%;
+    padding: 1%;
+    margin: 1%;
+}
+
+.borderleft {
+    border-left: 1px solid rgba(202, 202, 202, 0.2);
+}
+.borderright {
+    border-right: 1px solid rgba(202, 202, 202, 0.2);
 }
