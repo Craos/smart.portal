@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Portal</title>
+
+  <meta name="description" content="Verticals">
+  <meta name="author" content="Oberdan Brito">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script defer src="/__/firebase/6.1.0/firebase-app.js"></script>
+  <script defer src="/__/firebase/6.1.0/firebase-auth.js"></script>
+  <script defer src="/__/firebase/init.js"></script>
+
+  <script src="https://cdn.firebase.com/libs/firebaseui/4.0.0/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/4.0.0/firebaseui.css" />
+
+  <script src="https://www.gstatic.com/firebasejs/ui/4.0.0/firebase-ui-auth__pt_br.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.0.0/firebase-ui-auth.css" />
+
+  <link rel="manifest" href="manifest.json">
+  <script src="https://www.gstatic.com/firebasejs/6.0.1/firebase.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/unidade/form_funcionarios.js"></script>
+  <script src="js/unidade/form_moradores.js"></script>
+  <script src="js/unidade/form_perfil.js"></script>
+  <script src="js/unidade/form_pets.js"></script>
+  <script src="js/unidade/form_unidade.js"></script>
+  <script src="js/unidade/form_veiculos.js"></script>
+  <script src="js/unidade/form_visitantes.js"></script>
+
+  <link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
+  <script src="dist/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="dist/firebaseui.css" />
+
+
+  <script type="text/javascript" src="lib/dhtmlx/codebase/dhtmlx.js"></script>
+  <script type="text/javascript" src="lib/moment/moment.js"></script>
+  <script type="text/javascript" src="lib/moment/moment-with-locales.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+  <script type="text/javascript" src="js/feeds.js"></script>
+
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link type="text/css" rel="stylesheet" href="lib/dhtmlx/skins/portal/dhtmlx.css">
+  <link type="text/css" rel="stylesheet" href="lib/Skeleton/css/normalize.css">
+  <link type="text/css" rel="stylesheet" href="lib/Skeleton/css/skeleton.css">
+  <link type="text/css" rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div id="corpo">
+  <header style="position: marker">
+    <div class="header u-full-width">
+      <div class="u-pull-left three columns logo">
+        <img src="img/logo.png" alt="Verticals">
+      </div>
+      <div class="three columns u-pull-right">
+        <input type="button" id="login" value="Acessar">
+        <input class="button-primary" id="registrese" type="submit" value="Registre-se">
+      </div>
+      <div class="toolbar">
+        <div class="u-pull-right hidden" id="tbusuario">
+          <img id="imguser" src="img/toolbar/usuario.png" alt="Login" /><span id="primeironome"></span>
+        </div>
+        <div class="u-pull-right" id="ajuda">
+          <img src="img/toolbar/ajuda.png" alt="Ajuda" /><span>Ajuda</span>
+        </div>
+        <div class="u-pull-right" id="notificacoes">
+          <img src="img/toolbar/mensagens.png" alt="Notificações" /><span>Notificações</span>
+        </div>
+        <div class="u-pull-right" id="correios">
+          <img src="img/toolbar/correios.png" alt="Correios" /><span>Correios</span>
+        </div>
+        <div class="u-pull-right" id="inicio">
+          <img src="img/toolbar/iniciar.png" alt="Iniciar" /><span>Iniciar</span>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="row banner"></div>
+  <div id="maincontainer" class="row u-full-width">
+  </div>
+  <div id="popupCorreiosOff" class="popupbox">
+    <p><strong>Correios</strong></p>
+    <div id="correiosnologin">
+      <p>Aqui você recebe notificações do<br>departamento dos correios do seu<br>condomínio. Para começar, faça o<br>seu registro ou faça <a>log-in</a></p>
+      <div class="one columns"><input class="button-primary" type="submit" value="Registro"></div>
+    </div>
+    <div id="correiosnomsg" class="hidden">
+      <p>No momento não há<br>nenhuma encomenda para você</p>
+    </div>
+  </div>
+  <div id="popupNotificacoesOff" class="popupbox">
+    <p><strong>Notificações e Multas</strong></p>
+    <div id="notificacoesnologin">
+      <p>Fique atento as regras e não fique irregular.<br>Verifique se existe alguma notificação ou<br>multa para sua unidade. Para começar, faça o<br>seu registro ou faça <a>log-in</a></p>
+      <div class="one columns"><input class="button-primary" type="submit" value="Registro"></div>
+    </div>
+    <div id="notificacoesnomsg" class="hidden">
+      <p>No momento não há<br>nenhuma notificação ou multa para você</p>
+    </div>
+  </div>
+  <div id="popupAjuda" class="popupbox">
+    <div class="row docs-section"><a>Tour</a><p>Comece aqui, para obter<br>uma visão geral e rápida do site</p></div>
+    <div class="row"><a>Central de ajuda</a><p>Respostas detalhadas a qualquer<br>pergunta que você tiver</p></div>
+  </div>
+  <div id="popupUnidade" class="popupbox">
+
+    <div class="row docs-section" id="form_perfil" onclick="showForm(this)">
+      <div class="row">
+        <div class="three columns"><img alt="Perfil" class="img-perfil" id="imgperfil" src="img/toolbar/pessoa.png"></div>
+        <div class="row">
+          <p><a id="nomecompleto"></a><br>Proprietário da unidade</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row menu-left docs-section" id="form_unidade" onclick="showForm(this)">
+      <a><div class="row"><img alt="Minha Unidade" class="menu-perfil-img" src="img/toolbar/unidade.png" />Minha Unidade</div></a>
+      <div class="row menu-unidade">Forneça informações a respeito da sua unidade</div>
+    </div>
+
+    <div class="row menu-left docs-section" id="form_moradores" onclick="showForm(this)">
+      <a><div class="row"><img alt="Moradores" class="menu-perfil-img" src="img/toolbar/moradores.png" />Moradores</div></a>
+      <div class="row menu-unidade">Cadastre as pessoas que moram nesta unidade</div>
+    </div>
+
+    <div class="row menu-left docs-section" id="form_veiculos" onclick="showForm(this)">
+      <a><div class="row"><img alt="Veículos" class="menu-perfil-img" src="img/toolbar/veiculos.png" />Veículos</div></a>
+      <div class="row menu-unidade">Cadastro de automóveis, motos e bicicletas</div>
+    </div>
+
+    <div class="row menu-left docs-section" id="form_visitantes" onclick="showForm(this)">
+      <a><div class="row"><img alt="Visitantes pré-autorizados" class="menu-perfil-img" src="img/toolbar/visitantes.png" />Visitantes pré-autorizados</div></a>
+      <div class="row menu-unidade">Autorize familiares e amigos na entrada de forma descomplicada<br></div>
+    </div>
+
+    <div class="row menu-left docs-section" id="form_pets" onclick="showForm(this)">
+      <a><div class="row"><img alt="Animais domésticos" class="menu-perfil-img" src="img/toolbar/animais.png" />Animais domésticos</div></a>
+      <div class="row menu-unidade">Cadastro de pets</div>
+    </div>
+
+    <div class="row menu-left docs-section" id="form_funcionarios" onclick="showForm(this)">
+      <a><div class="row"><img alt="Funcionários da unidade" class="menu-perfil-img" src="img/toolbar/funcionarios.png" />Funcionários da unidade</div></a>
+      <div class="row menu-unidade">Diaristas e prestadores de serviço</div>
+    </div>
+
+    <div class="row menu-left" id="form_sair" onclick="showForm(this)">
+      <a><img alt="Sair" id="saida" class="menu-perfil-img" src="img/toolbar/sair.png" />Sair</a>
+    </div>
+  </div>
+</div>
+<script src="js/auth.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
