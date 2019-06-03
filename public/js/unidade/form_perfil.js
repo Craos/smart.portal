@@ -5,6 +5,7 @@ let FormPerfil = function () {
             type: 'GET',
             data: {},
             success: function (data) {
+
                 $(".error_msg").text(data);
 
                 let div1 = document.createElement('div');
@@ -14,26 +15,30 @@ let FormPerfil = function () {
                 let moradores = new FormMoradores();
                 moradores.ListaMoradores();
 
-                let opcoes = [
-                    {
-                        id: 0,
-                        Nome: "Perfil",
-                        src: 'img/menuleft/comunicados.png'
-                    },
+                let listaperfiloperacoes = [
                     {
                         id: 1,
-                        Nome: "Acesso",
-                        src: 'img/menuleft/eventos.png'
+                        Nome: "Perfil",
+                        src: 'img/menuleft/comunicados.png',
+                        container: '#perfil'
                     },
                     {
                         id: 2,
-                        Nome: "Emails",
-                        src: 'img/menuleft/assembleias.png'
+                        Nome: "Conta de acesso",
+                        src: 'img/menuleft/eventos.png',
+                        container: '#conta'
                     },
                     {
                         id: 3,
                         Nome: "Emails",
-                        src: 'img/menuleft/manutencoes.png'
+                        src: 'img/menuleft/assembleias.png',
+                        container: '#emails'
+                    },
+                    {
+                        id: 4,
+                        Nome: "Notificações",
+                        src: 'img/menuleft/manutencoes.png',
+                        container: '#chnotificacoes'
                     }
                 ];
 
@@ -45,7 +50,15 @@ let FormPerfil = function () {
                     },
                 });
 
-                lista.parse(opcoes, 'json');
+                lista.parse(listaperfiloperacoes, 'json');
+
+                lista.attachEvent("onItemClick", function (id) {
+                    $('.alt').hide();
+                    $(lista.get(id).container).show(300);
+                    return true;
+                });
+
+                document.getElementById('atualizarperfil').addEventListener('click', AtualizarPerfil);
 
                 hidePopup();
 
@@ -53,5 +66,8 @@ let FormPerfil = function () {
         }
     );
 
+    function AtualizarPerfil() {
+        $('sucesso').show(300);
+    }
 
 };

@@ -5,35 +5,121 @@
     <title>Perfil</title>
 </head>
 <body>
+    <div id="sucesso" class="u-full-width sucesso hidden">
+        <div class="container">
+            Sucesso! suas preferências foram atualizadas.
+        </div>
+    </div>
     <div class="three columns menulateral borderright">
-        <h6><strong>Informações pessoais</strong></h6>
         <div id="lista-cadastros" class="lista-operacoes"></div>
     </div>
-
     <div id="artigos" class="four columns">
-        <!-- The above form looks like this -->
-        <form>
-            <div class="row">
-                <label for="nome">Nome</label>
-                <input type="text" id="nome" class="u-full-width">
-            </div>
-            <div class="row">
-                <label for="torre">Nome da torre onde reside</label>
-                <select class="u-full-width" id="torre">
-                    <option value="1">Torre 1</option>
-                    <option value="2">Torre 2</option>
-                    <option value="3">Torre 3</option>
-                    <option value="4">Torre 4</option>
-                </select><br>
-                <span>Informe o nome do bloco/torre que descreve a sua unidade no condomínio</span>
-            </div>
-            <div class="row">
-                <label for="unidade">Número da unidade</label>
-                <input type="text" id="unidade" class="u-full-width"><br>
-                <span>Informe apenas os números que identificam a sua unidade</span>
-            </div>
-            <input class="button-primary" type="submit" value="Atualizar">
-        </form>
+        <div id="perfil" class="alt">
+            <h5><strong>Informações pessoais</strong></h5>
+            <form id="formidentificacao">
+                <div class="row">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" class="u-full-width">
+                </div>
+                <div class="row">
+                    <label for="torre">Nome da torre onde reside</label>
+                    <select class="u-full-width" id="torre">
+                        <option value="1">Torre 1</option>
+                        <option value="2">Torre 2</option>
+                        <option value="3">Torre 3</option>
+                        <option value="4">Torre 4</option>
+                    </select><br>
+                    <span>Informe o nome do bloco/torre que descreve a sua unidade no condomínio</span>
+                </div>
+                <div class="row">
+                    <label for="unidade">Número da unidade</label>
+                    <input type="text" id="unidade" class="u-full-width"><br>
+                    <span>Informe apenas os números que identificam a sua unidade</span>
+                </div>
+                <input class="button-primary" id="atualizarperfil" type="button" value="Atualizar">
+            </form>
+        </div>
+        <div id="conta" class="hidden alt">
+            <h5><strong>Altera a senha de acesso</strong></h5>
+            <form id="formmudarsenha">
+                <div class="row">
+                    <label for="oldpassword">Senha antiga</label>
+                    <input type="text" id="oldpassword" class="u-full-width">
+                </div>
+                <div class="row">
+                    <label for="newpassword">Nova senha</label>
+                    <input type="text" id="newpassword" class="u-full-width">
+                </div>
+                <div class="row">
+                    <label for="confirmpassword">Confirme a nova senha</label>
+                    <input type="text" id="confirmpassword" class="u-full-width">
+                    <span>Certifique-se de que a senha tenha pelo menos 6 caracteres, incluindo um número e uma letra minúscula.</span>
+                </div>
+                <input class="button-primary" type="submit" value="Atualizar">
+            </form>
+            <h6><strong>Remover esta conta</strong></h6>
+            <form id="formremoverconta">
+                <span>Atenção ao remover a conta todas as informações pertinentes a esta unidade serão removidas.</span>
+                <input class="button-primary" type="submit" value="Atualizar">
+            </form>
+        </div>
+        <div id="emails" class="hidden alt">
+            <h5><strong>Emails</strong></h5>
+            <form id="formemails">
+                <div class="row">
+                    <label for="emailprimario">Endereço de email primário</label>
+                    <input type="email" id="emailprimario" class="u-full-width"><br>
+                    <span class="row">oberdan@craos.net será usado para notificações relacionadas à conta, quaisquer operações do condomínio baseadas na web (por exemplo, edições e mesclagens) e podem ser usadas para redefinições de senha.</span>
+                    <input class="button-primary" type="submit" value="Atualizar">
+                </div>
+                <div class="row">
+                    <label for="emailreserva">Email opcional</label>
+                    <input type="email" id="emailreserva" class="u-full-width">
+                    <span class="row">Seu endereço de e-mail de reserva será usado como um destino adicional para notificações de contas relevantes para a segurança e também pode ser usado para redefinições de senha.</span>
+                    <input class="button-primary" type="submit" value="Atualizar">
+                </div>
+                <div class="row">
+                    <label for="emailcorrespondencias">Email de correspondências</label>
+                    <input type="email" id="emailcorrespondencias" class="u-full-width">
+                    <span class="row">Será utilizado para informativo para novas correspondências e encomendas</span>
+                    <input class="button-primary" type="submit" value="Adicionar">
+                </div>
+            </form>
+        </div>
+        <div id="chnotificacoes" class="hidden alt">
+            <h5><strong>Notificações</strong></h5>
+            <span class="row u-full-width">Escolha como você recebe notificações. Essas configurações de notificação se aplicam às funcionalidades que você está utilizando no portal.</span><br>
+            <form id="formnotificacoes">
+                <div class="row">
+                    <label for="notificarmultas" class="example-send-yourself-copy">
+                        <input type="checkbox" id="notificarmultas">
+                        <span class="label-body">Alerta de notificações e multas</span><br>
+                        <span class="row">Você receberá um e-mail ao ser notificado ou receber algum tipo de multa no condomínio</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label for="regras" class="example-send-yourself-copy">
+                        <input type="checkbox" id="regras">
+                        <span class="label-body">Eventos</span><br>
+                        <span class="row">Receber informativo de eventos, festas e participações comunitárias do condomínio</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label for="assembleias" class="example-send-yourself-copy">
+                        <input type="checkbox" id="assembleias">
+                        <span class="label-body">Assembéias</span><br>
+                        <span class="row">Notificações de datas das assembléias</span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label for="manutencoes" class="example-send-yourself-copy">
+                        <input type="checkbox" id="manutencoes">
+                        <span class="label-body">Manutenções e reformas</span><br>
+                        <span class="row">Receber informativo quando tiver manutenções ou reformas do condomínio</span>
+                    </label>
+                </div>
+            </form>
+        </div>
     </div>
     <div class="three columns menulateral borderleft u-pull-right">
         <strong>Moradores da sua unidade</strong>

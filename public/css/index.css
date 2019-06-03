@@ -2,6 +2,8 @@ html, body {
     margin: 0;
     padding: 0;
     width: 100%;
+
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
 }
 
 form .row {
@@ -9,7 +11,7 @@ form .row {
 }
 
 input, textarea, select, fieldset {
-   margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 form span {
@@ -19,11 +21,11 @@ form span {
 }
 
 .linha-cor {
-    display:block;
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     background-color: #33C3F0;
     height: 3px;
 }
@@ -33,10 +35,10 @@ form span {
     position: fixed;
     top: 0;
     left: 0;
-    -webkit-box-shadow: 0 3px 5px -5px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0 3px 5px -5px rgba(0,0,0,0.75);
-    box-shadow: 0 3px 5px -5px rgba(0,0,0,0.75);
-    text-align:center;
+    -webkit-box-shadow: 0 3px 5px -5px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0 3px 5px -5px rgba(0, 0, 0, 0.75);
+    box-shadow: 0 3px 5px -5px rgba(0, 0, 0, 0.75);
+    text-align: center;
     padding-top: 10px;
     padding-bottom: 3px;
     overflow: hidden;
@@ -56,10 +58,13 @@ form span {
     width: 100%;
 }
 
+.meio.columns {
+    width: 52%;
+}
+
 #artigos {
     overflow-y: auto;
     height: 90%;
-    margin: 1%;
 }
 
 #ligue {
@@ -117,9 +122,9 @@ form span {
 .img-perfil {
     width: 64px;
     border: 5px solid #fff;
-    -webkit-box-shadow: 0 3px 5px -5px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0 3px 5px -5px rgba(0,0,0,0.75);
-    box-shadow: 0 3px 5px -5px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0 3px 5px -5px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0 3px 5px -5px rgba(0, 0, 0, 0.75);
+    box-shadow: 0 3px 5px -5px rgba(0, 0, 0, 0.75);
 
 }
 
@@ -145,11 +150,11 @@ form span {
 }
 
 .popupbox {
-    display:none;
+    display: none;
 }
 
 .docs-section {
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #cacaca;
     margin: 0;
     padding: 0;
     cursor: pointer;
@@ -169,7 +174,7 @@ form span {
 .rodape {
     margin-top: 20px;
     padding: 10px;
-    border: 1px solid #E1E1E1;
+    border: 1px solid #cacaca;
     border-radius: 4px;
 }
 
@@ -191,9 +196,19 @@ form span {
     margin: 1%;
 }
 
-.borderleft {
-    border-left: 1px solid rgba(202, 202, 202, 0.2);
+.sucesso {
+    background-color: rgba(232, 242, 254, 0.4);
+    border-bottom: 1px solid #cacaca;
+    color: #032f62;
+    padding: 12px;
+    margin-top: -15px;
+    margin-bottom: 10px;
 }
+
+.borderleft {
+    border-left: 1px solid #cacaca;
+}
+
 .borderright {
-    border-right: 1px solid rgba(202, 202, 202, 0.2);
+    border-right: 1px solid #cacaca;
 }

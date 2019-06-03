@@ -31,7 +31,8 @@ let FormMoradores = function () {
         let myList = new dhtmlXList({
             container:containermoradores,
             type:{
-                template:"#Nome#<br/><span style='color: darkgrey'>#Tipocadastro#</span>"
+                template:"#Nome#<br/><span style='color: darkgrey'>#Tipocadastro#</span>",
+                height: 70
             }
         });
 
