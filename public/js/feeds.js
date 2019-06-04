@@ -36,32 +36,32 @@ let MainFeeds = function () {
                                     {
                                         id: 0,
                                         Nome: "Comunicados",
-                                        src: 'img/menuleft/comunicados.png'
+                                        src: 'fas fa-bell'
                                     },
                                     {
                                         id: 1,
                                         Nome: "Eventos",
-                                        src: 'img/menuleft/eventos.png'
+                                        src: 'far fa-calendar-alt'
                                     },
                                     {
                                         id: 2,
                                         Nome: "Assembléias",
-                                        src: 'img/menuleft/assembleias.png'
+                                        src: 'fas fa-users'
                                     },
                                     {
                                         id: 3,
                                         Nome: "Manutenções",
-                                        src: 'img/menuleft/manutencoes.png'
+                                        src: 'fas fa-tools'
                                     },
                                     {
                                         id: 4,
                                         Nome: "O condomínio",
-                                        src: 'img/menuleft/condominio.png'
+                                        src: 'fas fa-building'
                                     },
                                     {
                                         id: 5,
                                         Nome: "Regimentos",
-                                        src: 'img/menuleft/regimento.png'
+                                        src: 'fas fa-pencil-ruler'
                                     },
                                 ];
 
@@ -69,44 +69,44 @@ let MainFeeds = function () {
                                     {
                                         id: 0,
                                         Nome: "Solicitações",
-                                        src: 'img/menuleft/solicitacoes.png'
+                                        src: 'fas fa-chalkboard-teacher'
                                     },
                                     {
                                         id: 1,
                                         Nome: "Reservas",
-                                        src: 'img/menuleft/reserva.png'
+                                        src: 'far fa-calendar-check'
                                     },
                                     {
                                         id: 3,
                                         Nome: "Reformas",
-                                        src: 'img/menuleft/reforma.png'
+                                        src: 'fas fa-hammer'
                                     },
                                     {
                                         id: 4,
                                         Nome: "Mudanças",
-                                        src: 'img/menuleft/mudanca.png'
+                                        src: 'fas fa-truck'
                                     },
                                     {
                                         id: 5,
                                         Nome: "Correios",
-                                        src: 'img/menuleft/correios.png'
+                                        src: 'fas fa-envelope-open'
                                     },
                                     {
                                         id: 6,
                                         Nome: "Notificações",
-                                        src: 'img/menuleft/notificacoes.png'
+                                        src: 'fas fa-comment-alt'
                                     },
                                     {
                                         id: 7,
                                         Nome: "Aluguel",
-                                        src: 'img/menuleft/aluguel.png'
+                                        src: 'fas fa-handshake'
                                     },
                                 ];
 
                                     let listainfocondominio = new dhtmlXList({
                                     container: document.getElementById('lista-info'),
                                     type: {
-                                        template: "<img class='menu-perfil-img' alt='#Nome#' src='#src#'><span>#Nome#</span>",
+                                        template: "<i class='#src# menu-perfil-img' alt='#Nome#' src='#src#'></i><span>#Nome#</span>",
                                         height: 40
                                     },
                                 });
@@ -115,7 +115,7 @@ let MainFeeds = function () {
                                 let listaoperacoesunidade = new dhtmlXList({
                                     container: document.getElementById('lista-opunidade'),
                                     type: {
-                                        template: "<img class='menu-perfil-img' alt='#Nome#' src='#src#'><span>#Nome#</span>",
+                                        template: "<i class='#src# menu-perfil-img' alt='#Nome#' src='#src#'></i><span>#Nome#</span>",
                                         height: 40
                                     },
                                 });
