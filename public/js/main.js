@@ -49,15 +49,15 @@ function showPopup(inp) {
             break;
     }
 
-    let x = window.dhx.absLeft(inp)+(inp.clientWidth/2);
-    let y = window.dhx.absTop(inp)+(inp.clientHeight-7);
+    let x = window.dhx.absLeft(inp) + (inp.clientWidth / 2);
+    let y = window.dhx.absTop(inp) + (inp.clientHeight - 7);
     let width = target.offsetWidth;
     let height = target.offsetHeight;
 
     popupObj.show(x, y, width, height);
 }
 
-let UsuarioLogado = function(user) {
+let UsuarioLogado = function (user) {
 
     console.clear();
     user.providerData.forEach(function (profile) {
@@ -116,9 +116,10 @@ function LoginSet() {
 
                 let provider = new firebase.auth.GoogleAuthProvider();
                 provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+
                 firebase.auth().languageCode = 'pt';
                 firebase.auth().signInWithRedirect(provider);
-                firebase.auth().getRedirectResult().then(function(result) {
+                firebase.auth().getRedirectResult().then(function (result) {
                     if (result.credential) {
                         // This gives you a Google Access Token. You can use it to access the Google API.
                         var token = result.credential.accessToken;
@@ -130,7 +131,7 @@ function LoginSet() {
 
                     console.debug(user);
 
-                }).catch(function(error) {
+                }).catch(function (error) {
                     // Handle Errors here.
                     var errorCode = error.code;
                     var errorMessage = error.message;
@@ -150,7 +151,7 @@ function LoginSet() {
 
                 firebase.auth().languageCode = 'pt';
                 firebase.auth().signInWithRedirect(provider);
-                firebase.auth().getRedirectResult().then(function(result) {
+                firebase.auth().getRedirectResult().then(function (result) {
                     if (result.credential) {
                         // This gives you a Google Access Token. You can use it to access the Google API.
                         var token = result.credential.accessToken;
@@ -162,7 +163,7 @@ function LoginSet() {
 
                     console.debug(user);
 
-                }).catch(function(error) {
+                }).catch(function (error) {
                     // Handle Errors here.
                     var errorCode = error.code;
                     var errorMessage = error.message;
@@ -175,7 +176,7 @@ function LoginSet() {
 
 
             } else if (this.id === 'email') {
-               window.location = 'auth';
+                window.location = 'auth';
             }
 
         });

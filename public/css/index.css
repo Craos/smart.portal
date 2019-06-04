@@ -192,6 +192,10 @@ form span {
     border-radius: 4px;
 }
 
+div.dhx_popup_material div.dhx_popup_area td.dhx_popup_td {
+    line-height: normal;
+}
+
 .rodape img {
     width: 6em;
 }
