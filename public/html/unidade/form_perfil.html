@@ -10,7 +10,13 @@
             Sucesso! suas preferências foram atualizadas.
         </div>
     </div>
+    <div id="falha" class="u-full-width sucesso hidden">
+        <div class="container">
+            Não foi possível prossegui com as suas solicitações
+        </div>
+    </div>
     <div class="three columns menulateral borderright">
+        <h6>Editar o meu perfil</h6>
         <div id="lista-cadastros" class="lista-operacoes"></div>
     </div>
     <div id="artigos" class="four columns">
@@ -55,12 +61,12 @@
                     <input type="text" id="confirmpassword" class="u-full-width">
                     <span>Certifique-se de que a senha tenha pelo menos 6 caracteres, incluindo um número e uma letra minúscula.</span>
                 </div>
-                <input class="button-primary" type="submit" value="Atualizar">
+                <input class="button-primary" type="button" value="Atualizar">
             </form>
             <h6><strong>Remover esta conta</strong></h6>
             <form id="formremoverconta">
                 <span>Atenção ao remover a conta todas as informações pertinentes a esta unidade serão removidas.</span>
-                <input class="button-primary" type="submit" value="Atualizar">
+                <input class="button-primary" id="atualizasenha" type="button" value="Atualizar">
             </form>
         </div>
         <div id="emails" class="hidden alt">
@@ -70,19 +76,19 @@
                     <label for="emailprimario">Endereço de email primário</label>
                     <input type="email" id="emailprimario" class="u-full-width"><br>
                     <span class="row">oberdan@craos.net será usado para notificações relacionadas à conta, quaisquer operações do condomínio baseadas na web (por exemplo, edições e mesclagens) e podem ser usadas para redefinições de senha.</span>
-                    <input class="button-primary" type="submit" value="Atualizar">
+                    <input class="button-primary" id="atualizaemailprimario" type="button" value="Atualizar">
                 </div>
                 <div class="row">
                     <label for="emailreserva">Email opcional</label>
                     <input type="email" id="emailreserva" class="u-full-width">
                     <span class="row">Seu endereço de e-mail de reserva será usado como um destino adicional para notificações de contas relevantes para a segurança e também pode ser usado para redefinições de senha.</span>
-                    <input class="button-primary" type="submit" value="Atualizar">
+                    <input class="button-primary" id="atualizaemailopcional" type="button" value="Atualizar">
                 </div>
                 <div class="row">
                     <label for="emailcorrespondencias">Email de correspondências</label>
                     <input type="email" id="emailcorrespondencias" class="u-full-width">
                     <span class="row">Será utilizado para informativo para novas correspondências e encomendas</span>
-                    <input class="button-primary" type="submit" value="Adicionar">
+                    <input class="button-primary" id="atualizaemailcorrespondencia" type="button" value="Adicionar">
                 </div>
             </form>
         </div>
@@ -98,22 +104,22 @@
                     </label>
                 </div>
                 <div class="row">
-                    <label for="regras" class="example-send-yourself-copy">
-                        <input type="checkbox" id="regras">
+                    <label for="notificaregras" class="example-send-yourself-copy">
+                        <input type="checkbox" id="notificaregras">
                         <span class="label-body">Eventos</span><br>
                         <span class="row">Receber informativo de eventos, festas e participações comunitárias do condomínio</span>
                     </label>
                 </div>
                 <div class="row">
-                    <label for="assembleias" class="example-send-yourself-copy">
-                        <input type="checkbox" id="assembleias">
+                    <label for="notificaassembleias" class="example-send-yourself-copy">
+                        <input type="checkbox" id="notificaassembleias">
                         <span class="label-body">Assembéias</span><br>
                         <span class="row">Notificações de datas das assembléias</span>
                     </label>
                 </div>
                 <div class="row">
-                    <label for="manutencoes" class="example-send-yourself-copy">
-                        <input type="checkbox" id="manutencoes">
+                    <label for="notificamanutencoes" class="example-send-yourself-copy">
+                        <input type="checkbox" id="notificamanutencoes">
                         <span class="label-body">Manutenções e reformas</span><br>
                         <span class="row">Receber informativo quando tiver manutenções ou reformas do condomínio</span>
                     </label>
@@ -122,7 +128,7 @@
         </div>
     </div>
     <div class="three columns menulateral borderleft u-pull-right">
-        <strong>Moradores da sua unidade</strong>
+        <h6>Moradores da sua unidade</h6>
         <div id="lista-moradores"></div>
     </div>
 </body>

@@ -127,45 +127,7 @@ function Exibelogin() {
  * Displays the UI for a signed in user.
  * @param {!firebase.User} user
  */
-let UsuarioLogado = function(user) {
 
-  console.clear();
-  user.providerData.forEach(function (profile) {
-    console.log("Sign-in provider: " + profile.providerId);
-    console.log("  Provider-specific UID: " + profile.uid);
-    console.log("  Name: " + profile.displayName);
-    console.log("  Email: " + profile.email);
-    console.log("  Photo URL: " + profile.photoURL);
-  });
-
-  document.getElementById('login').style.display = 'none';
-  document.getElementById('registrese').style.display = 'none';
-  document.getElementById('tbusuario').style.display = 'block';
-  document.getElementById('correiosnologin').style.display = 'none';
-  document.getElementById('correiosnomsg').style.display = 'block';
-  document.getElementById('notificacoesnologin').style.display = 'none';
-  document.getElementById('notificacoesnomsg').style.display = 'block';
-  document.getElementById('nomecompleto').textContent = user.displayName;
-  document.getElementById('primeironome').textContent = user.displayName.split(' ')[0];
-
-  document.getElementById('nomecompleto').addEventListener("click", teste);
-
-  function teste() {
-    console.clear();
-    console.debug(this);
-  }
-
-  if (user.photoURL) {
-    var photoURL = user.photoURL;
-    if ((photoURL.indexOf('googleusercontent.com') !== -1) || (photoURL.indexOf('ggpht.com') !== -1)) {
-      photoURL = photoURL + '?sz=' + document.getElementById('imgperfil').clientHeight;
-    }
-    document.getElementById('imguser').src = photoURL;
-    document.getElementById('imgperfil').src = photoURL;
-  }
-
-  new MainFeeds();
-};
 
 /**
  * Deletes the user's account.

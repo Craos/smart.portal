@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>EasyAuth</title>
+<meta charset="UTF-8">
+</head>
+
+<script src="https://www.gstatic.com/firebasejs/6.0.1/firebase.js"></script>
+<script src="https://cdn.firebase.com/libs/firebaseui/4.0.0/firebaseui.js"></script>
+<script src="https://www.gstatic.com/firebasejs/ui/4.0.0/firebase-ui-auth__pt_br.js"></script>
+
+
+<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
+<script type="text/javascript">
+
+    // Initialize Firebase
+    const firebaseConfig = {
+        apiKey: "AIzaSyB943PJ2Ut23_L7GH9aqeEFpjeIV2GB9Mk",
+        authDomain: "verticals-140da.firebaseapp.com",
+        databaseURL: "https://verticals-140da.firebaseio.com",
+        projectId: "verticals-140da",
+        storageBucket: "verticals-140da.appspot.com",
+        messagingSenderId: "152190289520",
+        appId: "1:152190289520:web:0e01f4f5d601c80a"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    var uiConfig = {
+        signInSuccessUrl: 'index.html',
+        immediateFederatedRedirect: true,
+        signInOptions: [
+            // Specify providers you want to offer your users.
+            firebase.auth.GoogleAuthProvider.PROVIDER_ID
+        ],
+
+        // Terms of service url can be specified and will show up in the widget.
+        tosUrl: 'html/termo.html',
+
+        // Privacy policy url.
+        privacyPolicyUrl: 'html/politica.html'
+    };
+
+
+
+    // Initialize the FirebaseUI Widget using Firebase.
+    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+    // The start method will wait until the DOM is loaded.
+    ui.start('#firebaseui-auth-container', uiConfig);
+
+</script>
+<!-- Include a simple background image & and title -->
+<div></div>
+<body>
+<h1>Bem vindo(a) ao Verticals</h1>
+<div id="firebaseui-auth-container"></div>
+</body>
+</html>

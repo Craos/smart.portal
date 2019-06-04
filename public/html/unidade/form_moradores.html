@@ -5,17 +5,59 @@
     <title>Perfil</title>
 </head>
 <body>
-<div class="row">
-    <div class="eight columns">
-        <h5>Moradores da sua unidade</h5>
-        <div id="lista-moradores"></div>
-    </div>
-    <div class="three columns">
-        <div class="row">
-            <h5>Meus visitantes</h5>
-            <div id="lista-visitantes"></div>
-        </div>
+<div id="sucesso" class="u-full-width sucesso hidden">
+    <div class="container">
+        Sucesso! suas preferências foram atualizadas.
     </div>
 </div>
+<div id="falha" class="u-full-width sucesso hidden">
+    <div class="container">
+        Não foi possível prossegui com as suas solicitações
+    </div>
+</div>
+<div class="three columns menulateral borderright">
+    <h6>Faz parte da sua unidade</h6>
+    <button>Adicionar</button>
+    <div id="lista-moradores" class="lista-operacoes"></div>
+</div>
+<div id="artigos" class="four columns">
+    <div id="perfil" class="hidden alt">
+        <h5><strong>Informações pessoais</strong></h5>
+        <div id="form-container" class="u-full-width"></div>
+        <!--form id="formidentificacao">
+            <div class="row">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" class="u-full-width">
+            </div>
+            <div class="row u-full-width">
+                <div class="u-pull-left">
+                    <label for="nascimento">Data de nascimento</label>
+                    <input type="date" id="nascimento">
+                </div>
+                <div class="eight columns u-pull-right">
+                    <label for="localnascimento">Local de nascimento</label>
+                    <input type="text" id="localnascimento" class="u-full-width">
+                </div>
+            </div>
+            <div class="row">
+                <label for="rg">Documento de identificação</label>
+                <input type="text" id="rg" class="u-full-width"><br>
+                <span>Informe o número do RG ou numero do passaporte</span>
+            </div>
+            <div class="row">
+                <label for="cpf">CPF</label>
+                <input type="text" id="cpf" class="u-full-width"><br>
+                <span>Informe o número do RG ou numero do passaporte</span>
+            </div>
+            <input class="button-primary" id="atualizarperfil" type="button" value="Adicionar">
+        </form-->
+    </div>
+
+</div>
+<div class="three columns menulateral borderleft u-pull-right">
+    <h6>Moradores da sua unidade</h6>
+    <div id="lista-visitantes"></div>
+</div>
+
 </body>
 </html>

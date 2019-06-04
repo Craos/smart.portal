@@ -101,6 +101,7 @@ form span {
 
 .lista-operacoes {
     margin: 1% 1% 2rem;
+    max-height: 500px;
 }
 
 .menu-left {
@@ -139,6 +140,19 @@ form span {
 
 .toolbar {
     height: 100%;
+}
+
+.toolbar .u-pull-right {
+    min-width: 4em;
+    margin-right: 0.5em;
+}
+
+.toolbar div span i {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    color: rgba(63, 64, 80, 0.92);
+    font-size: 1.5em;
 }
 
 .hidden {
@@ -196,13 +210,26 @@ form span {
     margin: 1%;
 }
 
-.sucesso {
-    background-color: rgba(232, 242, 254, 0.4);
+.teste {
+    color: red;
+    background-color: #0ab169;
+}
+
+.sucesso, .falha {
     border-bottom: 1px solid #cacaca;
-    color: #032f62;
     padding: 12px;
     margin-top: -15px;
     margin-bottom: 10px;
+}
+
+.sucesso {
+    color: #032f62;
+    background-color: rgba(232, 242, 254, 0.4);
+}
+
+.falha {
+    color: rgba(246, 243, 228, 0.55);
+    background-color: rgba(254, 3, 0, 0.4);
 }
 
 .borderleft {

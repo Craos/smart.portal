@@ -8,20 +8,21 @@
   <meta name="author" content="Oberdan Brito">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <script src="https://www.gstatic.com/firebasejs/6.0.1/firebase.js"></script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/4.0.0/firebaseui.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.0.0/firebase-ui-auth__pt_br.js"></script>
+
   <script defer src="/__/firebase/6.1.0/firebase-app.js"></script>
   <script defer src="/__/firebase/6.1.0/firebase-auth.js"></script>
   <script defer src="/__/firebase/init.js"></script>
+  <script src="dist/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="dist/firebaseui.css" />
 
-  <script src="https://cdn.firebase.com/libs/firebaseui/4.0.0/firebaseui.js"></script>
   <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/4.0.0/firebaseui.css" />
-
-  <script src="https://www.gstatic.com/firebasejs/ui/4.0.0/firebase-ui-auth__pt_br.js"></script>
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.0.0/firebase-ui-auth.css" />
 
   <link rel="manifest" href="manifest.json">
-  <script src="https://www.gstatic.com/firebasejs/6.0.1/firebase.js"></script>
   <script src="js/config.js"></script>
-  <script src="js/common.js"></script>
   <script src="js/unidade/form_funcionarios.js"></script>
   <script src="js/unidade/form_moradores.js"></script>
   <script src="js/unidade/form_perfil.js"></script>
@@ -30,19 +31,11 @@
   <script src="js/unidade/form_veiculos.js"></script>
   <script src="js/unidade/form_visitantes.js"></script>
 
-  <link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
-  <script src="dist/firebaseui.js"></script>
-  <link type="text/css" rel="stylesheet" href="dist/firebaseui.css" />
-
-
-  <script type="text/javascript" src="lib/dhtmlx/codebase/dhtmlx.js"></script>
-  <script type="text/javascript" src="lib/moment/moment.js"></script>
-  <script type="text/javascript" src="lib/moment/moment-with-locales.js"></script>
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
   <script type="text/javascript" src="js/feeds.js"></script>
+  <script type="text/javascript" src="lib/dhtmlx/codebase/dhtmlx.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://kit.fontawesome.com/b9786aa6c5.js"></script>
 
-  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
   <link type="text/css" rel="stylesheet" href="lib/dhtmlx/skins/portal/dhtmlx.css">
   <link type="text/css" rel="stylesheet" href="lib/Skeleton/css/normalize.css">
   <link type="text/css" rel="stylesheet" href="lib/Skeleton/css/skeleton.css">
@@ -55,25 +48,36 @@
       <div class="u-pull-left three columns logo">
         <img src="img/logo.png" alt="Verticals">
       </div>
-      <div class="three columns u-pull-right">
-        <input type="button" id="login" value="Acessar">
-        <input class="button-primary" id="registrese" type="submit" value="Registre-se">
-      </div>
       <div class="toolbar">
-        <div class="u-pull-right hidden" id="tbusuario">
-          <img id="imguser" src="img/toolbar/usuario.png" alt="Login" /><span id="primeironome"></span>
+        <div class="u-pull-right" id="login">
+          <span>
+            <i class="fas fa-user-circle"></i>
+          </span>
+          <span>Acessar</span>
         </div>
         <div class="u-pull-right" id="ajuda">
-          <img src="img/toolbar/ajuda.png" alt="Ajuda" /><span>Ajuda</span>
+          <span>
+            <i class="fas fa-question-circle"></i>
+          </span>
+          <span>Ajuda</span>
         </div>
         <div class="u-pull-right" id="notificacoes">
-          <img src="img/toolbar/mensagens.png" alt="Notificações" /><span>Notificações</span>
+          <span>
+            <i class="far fa-comment-alt"></i>
+          </span>
+          <span>Notificações</span>
         </div>
         <div class="u-pull-right" id="correios">
-          <img src="img/toolbar/correios.png" alt="Correios" /><span>Correios</span>
+          <span>
+            <i class="fas fa-box-open"></i>
+          </span>
+          <span>Correios</span>
         </div>
         <div class="u-pull-right" id="inicio">
-          <img src="img/toolbar/iniciar.png" alt="Iniciar" /><span>Iniciar</span>
+          <span>
+            <i class="fas fa-home"></i>
+          </span>
+          <span>Iniciar</span>
         </div>
       </div>
     </div>
@@ -106,16 +110,14 @@
     <div class="row"><a>Central de ajuda</a><p>Respostas detalhadas a qualquer<br>pergunta que você tiver</p></div>
   </div>
   <div id="popupUnidade" class="popupbox">
-
     <div class="row docs-section" id="form_perfil" onclick="showForm(this)">
-      <div class="row">
-        <div class="three columns"><img alt="Perfil" class="img-perfil" id="imgperfil" src="img/toolbar/pessoa.png"></div>
-        <div class="row">
-          <p><a id="nomecompleto"></a><br>Proprietário da unidade</p>
+      <div class='row'>
+        <div class='three columns'><img alt='Perfil' class='img-perfil' id='imgperfil' src='img/toolbar/pessoa.png'></div>
+        <div class='row'>
+          <p><a id='nomecompleto'></a><br>Proprietário da unidade</p>
         </div>
       </div>
     </div>
-
     <div class="row menu-left docs-section" id="form_unidade" onclick="showForm(this)">
       <a><div class="row"><img alt="Minha Unidade" class="menu-perfil-img" src="img/toolbar/unidade.png" />Minha Unidade</div></a>
       <div class="row menu-unidade">Forneça informações a respeito da sua unidade</div>
@@ -150,8 +152,13 @@
       <a><img alt="Sair" id="saida" class="menu-perfil-img" src="img/toolbar/sair.png" />Sair</a>
     </div>
   </div>
+  <div id="popupLogin" class="popupbox">
+    <h6>Bem vindo(a) ao Verticals!</h6>
+    <button id="google">Google</button>
+    <button id="face">Facebook</button>
+    <button id="email">E-mail</button>
+  </div>
 </div>
-<script src="js/auth.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

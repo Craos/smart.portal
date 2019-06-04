@@ -28,7 +28,9 @@ let MainFeeds = function () {
 
                                 let div1 = document.createElement('div');
                                 div1.innerHTML = data;
-                                document.getElementById('artigos').appendChild(div1);
+
+                                $(div1).appendTo('#artigos').show(400);
+
 
                                 let listaitenscondominio = [
                                     {

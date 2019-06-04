@@ -53,12 +53,23 @@ let FormPerfil = function () {
                 lista.parse(listaperfiloperacoes, 'json');
 
                 lista.attachEvent("onItemClick", function (id) {
+                    $('.sucesso').hide();
+                    $('.falha').hide();
                     $('.alt').hide();
                     $(lista.get(id).container).show(300);
                     return true;
                 });
 
-                document.getElementById('atualizarperfil').addEventListener('click', AtualizarPerfil);
+                $("#atualizarperfil").bind("click", AtualizarPerfil);
+                $("#atualizasenha").bind("click", AtualizarPerfil);
+                $("#atualizaemailprimario").bind("click", AtualizarPerfil);
+                $("#atualizaemailopcional").bind("click", AtualizarPerfil);
+                $("#atualizaemailcorrespondencia").bind("click", AtualizarPerfil);
+
+                $('#notificarmultas').on('change', AtualizaNotificacoes);
+                $('#notificaregras').on('change', AtualizaNotificacoes);
+                $('#notificaassembleias').on('change', AtualizaNotificacoes);
+                $('#notificamanutencoes').on('change', AtualizaNotificacoes);
 
                 hidePopup();
 
@@ -67,7 +78,11 @@ let FormPerfil = function () {
     );
 
     function AtualizarPerfil() {
-        $('sucesso').show(300);
+        $('#sucesso').show(300);
+    }
+
+    function AtualizaNotificacoes() {
+        $('#sucesso').show(300);
     }
 
 };

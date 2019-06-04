@@ -1,45 +1,34 @@
-let loggedUser;
-
-// Inicialize o FirebaseUI Widget usando o Firebase.
-let ui = new firebaseui.auth.AuthUI(firebase.auth());
-
-// Desabilita o auto-sign in.
-ui.disableAutoSignIn();
+let uiConfig, loggedUser, popupObj = new dhtmlXPopup();
 
 (function () {
 
     console.info('Verticals Versão 1.0');
 
-    let login = document.getElementById('login');
-
+    firebase.initializeApp(firebaseConfig);
 
     firebase.auth().onAuthStateChanged(function (user) {
         loggedUser = user;
         if (user === null) {
-
-            login.classList.add('visible');
-            login.addEventListener('click', Exibelogin);
+            //login.classList.add('visible');
+            //login.addEventListener('click', Exibelogin);
         } else {
             UsuarioLogado(user);
         }
     });
 
+    $("#inicio").bind("click", MainFeeds);
+    $("#correios, #notificacoes, #ajuda, #login").bind("click", function () {
+        showPopup(this);
+    });
+
+    new MainFeeds();
+
 
 })();
-
-
-let popupObj = new dhtmlXPopup();
-
-dhtmlxEvent(window, 'load', function () {
-
-    new SmartPortal();
-
-});
 
 function showPopup(inp) {
 
     let target;
-
     switch (inp.id) {
 
         case 'correios':
@@ -57,9 +46,8 @@ function showPopup(inp) {
             popupObj.attachHTML(target.innerHTML);
             break;
 
-        case 'tbusuario':
-            target = document.getElementById('popupUnidade');
-            popupObj.attachHTML(target.innerHTML);
+        case 'login':
+            target = LoginSet();
             break;
     }
 
@@ -71,8 +59,133 @@ function showPopup(inp) {
     popupObj.show(x, y, width, height);
 }
 
-function hidePopup() {
-    popupObj.hide();
+let UsuarioLogado = function(user) {
+
+    console.clear();
+    user.providerData.forEach(function (profile) {
+        console.log("Sign-in provider: " + profile.providerId);
+        console.log("  Provider-specific UID: " + profile.uid);
+        console.log("  Name: " + profile.displayName);
+        console.log("  Email: " + profile.email);
+        console.log("  Photo URL: " + profile.photoURL);
+    });
+
+    document.getElementById('tbusuario').style.display = 'block';
+    document.getElementById('correiosnologin').style.display = 'none';
+    document.getElementById('correiosnomsg').style.display = 'block';
+    document.getElementById('notificacoesnologin').style.display = 'none';
+    document.getElementById('notificacoesnomsg').style.display = 'block';
+    document.getElementById('nomecompleto').textContent = user.displayName;
+    document.getElementById('primeironome').textContent = user.displayName.split(' ')[0];
+
+    document.getElementById('nomecompleto').addEventListener("click", teste);
+
+    function teste() {
+        console.clear();
+        console.debug(this);
+    }
+
+    if (user.photoURL) {
+        var photoURL = user.photoURL;
+        if ((photoURL.indexOf('googleusercontent.com') !== -1) || (photoURL.indexOf('ggpht.com') !== -1)) {
+            photoURL = photoURL + '?sz=' + document.getElementById('imgperfil').clientHeight;
+        }
+        document.getElementById('imguser').src = photoURL;
+        document.getElementById('imgperfil').src = photoURL;
+    }
+
+    new MainFeeds();
+};
+
+function LoginSet() {
+
+    let target;
+
+    if (loggedUser) {
+
+        target = document.getElementById('popupUnidade');
+        popupObj.attachHTML(target.innerHTML);
+
+    } else {
+
+        target = document.getElementById('popupLogin');
+        popupObj.attachHTML(target.innerHTML);
+
+        $("#google, #face, #email").bind("click", function () {
+
+            if (this.id === 'google') {
+
+                let provider = new firebase.auth.GoogleAuthProvider();
+                provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+                firebase.auth().languageCode = 'pt';
+                firebase.auth().signInWithRedirect(provider);
+                firebase.auth().getRedirectResult().then(function(result) {
+                    if (result.credential) {
+                        // This gives you a Google Access Token. You can use it to access the Google API.
+                        var token = result.credential.accessToken;
+                        console.debug(token);
+                        // ...
+                    }
+                    // The signed-in user info.
+                    var user = result.user;
+
+                    console.debug(user);
+
+                }).catch(function(error) {
+                    // Handle Errors here.
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    // The email of the user's account used.
+                    var email = error.email;
+                    // The firebase.auth.AuthCredential type that was used.
+                    var credential = error.credential;
+                    // ...
+                });
+
+
+            } else if (this.id === 'face') {
+
+                let provider = new firebase.auth.FacebookAuthProvider();
+                provider.addScope('public_profile');
+                provider.addScope('email');
+
+                firebase.auth().languageCode = 'pt';
+                firebase.auth().signInWithRedirect(provider);
+                firebase.auth().getRedirectResult().then(function(result) {
+                    if (result.credential) {
+                        // This gives you a Google Access Token. You can use it to access the Google API.
+                        var token = result.credential.accessToken;
+                        console.debug(token);
+                        // ...
+                    }
+                    // The signed-in user info.
+                    var user = result.user;
+
+                    console.debug(user);
+
+                }).catch(function(error) {
+                    // Handle Errors here.
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    // The email of the user's account used.
+                    var email = error.email;
+                    // The firebase.auth.AuthCredential type that was used.
+                    var credential = error.credential;
+                    // ...
+                });
+
+
+            } else if (this.id === 'email') {
+                console.debug(this.id);
+            }
+
+        });
+
+
+    }
+
+    return target;
+
 }
 
 function showForm(item) {
@@ -114,66 +227,3 @@ function showForm(item) {
 
     }
 }
-
-let SmartPortal = function () {
-
-    let that = this;
-
-    let inicio =  document.getElementById('inicio');
-
-    inicio.addEventListener('click', function () {
-        new MainFeeds();
-    });
-
-
-    let correios =  document.getElementById('correios');
-
-    correios.addEventListener('click', function () {
-        showPopup(this);
-    });
-
-    correios.addEventListener('onblur', function () {
-        hidePopup();
-    });
-
-
-    let notificacoes =  document.getElementById('notificacoes');
-
-    notificacoes.addEventListener('click', function () {
-        showPopup(this);
-    });
-
-    notificacoes.addEventListener('onblur', function () {
-        hidePopup();
-    });
-
-
-    let ajuda =  document.getElementById('ajuda');
-
-    ajuda.addEventListener('click', function () {
-        showPopup(this);
-    });
-
-    ajuda.addEventListener('onblur', function () {
-        hidePopup();
-    });
-
-    let tbusuario =  document.getElementById('tbusuario');
-
-    if (tbusuario !== null) {
-        tbusuario.addEventListener('click', function () {
-            showPopup(this);
-        });
-
-        tbusuario.addEventListener('onblur', function () {
-            hidePopup();
-        });
-    }
-
-    this.ExibirArtigos = function () {
-        new MainFeeds();
-    };
-
-    that.ExibirArtigos();
-
-};
