@@ -30,6 +30,23 @@ form span {
     height: 3px;
 }
 
+.midia-buttons{
+    width: 13em;
+}
+
+.midia-buttons-div{
+    width: 18em;
+}
+
+.space-icons{
+    margin-right: 5px;
+    border-right: solid 1px lightgrey;
+}
+.space-icons-border{
+    border-right: solid 1px lightgrey;
+    margin-left: 20px;
+}
+
 .header {
     border-top: 3px solid #33C3F0;
     position: fixed;
@@ -166,6 +183,7 @@ form span {
 .popupbox {
     display: none;
 }
+
 
 .docs-section {
     border-bottom: 1px solid #cacaca;
