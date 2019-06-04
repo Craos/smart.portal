@@ -30,8 +30,10 @@
         signInSuccessUrl: 'index.html',
         immediateFederatedRedirect: true,
         signInOptions: [
-            // Specify providers you want to offer your users.
-            firebase.auth.GoogleAuthProvider.PROVIDER_ID
+            {
+                provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+                requireDisplayName: true
+            }
         ],
 
         // Terms of service url can be specified and will show up in the widget.

@@ -14,7 +14,7 @@ let FormVeiculos = function () {
                     div1.innerHTML = data;
                     document.getElementById('maincontainer').innerHTML = div1.innerHTML;
 
-                    hidePopup();
+                    popupObj.hide();
 
                 }
             }

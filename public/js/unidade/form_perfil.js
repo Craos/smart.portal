@@ -71,7 +71,7 @@ let FormPerfil = function () {
                 $('#notificaassembleias').on('change', AtualizaNotificacoes);
                 $('#notificamanutencoes').on('change', AtualizaNotificacoes);
 
-                hidePopup();
+                popupObj.hide();
 
             }
         }

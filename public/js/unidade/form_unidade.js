@@ -10,7 +10,7 @@ let FormUnidade = function () {
                 },
                 success: function (data) {
                     $(".error_msg").text(data);
-                    hidePopup();
+                    popupObj.hide();
                     callback(data);
                 }
             }

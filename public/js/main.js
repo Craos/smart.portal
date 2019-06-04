@@ -1,4 +1,4 @@
-let uiConfig, loggedUser, popupObj = new dhtmlXPopup();
+let loggedUser, popupObj = new dhtmlXPopup();
 
 (function () {
 
@@ -7,13 +7,11 @@ let uiConfig, loggedUser, popupObj = new dhtmlXPopup();
     firebase.initializeApp(firebaseConfig);
 
     firebase.auth().onAuthStateChanged(function (user) {
+
         loggedUser = user;
-        if (user === null) {
-            //login.classList.add('visible');
-            //login.addEventListener('click', Exibelogin);
-        } else {
+        if (user)
             UsuarioLogado(user);
-        }
+
     });
 
     $("#inicio").bind("click", MainFeeds);
@@ -70,14 +68,12 @@ let UsuarioLogado = function(user) {
         console.log("  Photo URL: " + profile.photoURL);
     });
 
-    document.getElementById('tbusuario').style.display = 'block';
     document.getElementById('correiosnologin').style.display = 'none';
     document.getElementById('correiosnomsg').style.display = 'block';
     document.getElementById('notificacoesnologin').style.display = 'none';
     document.getElementById('notificacoesnomsg').style.display = 'block';
     document.getElementById('nomecompleto').textContent = user.displayName;
     document.getElementById('primeironome').textContent = user.displayName.split(' ')[0];
-
     document.getElementById('nomecompleto').addEventListener("click", teste);
 
     function teste() {
@@ -90,7 +86,10 @@ let UsuarioLogado = function(user) {
         if ((photoURL.indexOf('googleusercontent.com') !== -1) || (photoURL.indexOf('ggpht.com') !== -1)) {
             photoURL = photoURL + '?sz=' + document.getElementById('imgperfil').clientHeight;
         }
-        document.getElementById('imguser').src = photoURL;
+
+        $('#user-cicle').hide();
+        document.getElementById('usertb').src = photoURL;
+        $('#usertb').show(300);
         document.getElementById('imgperfil').src = photoURL;
     }
 
@@ -176,7 +175,7 @@ function LoginSet() {
 
 
             } else if (this.id === 'email') {
-                console.debug(this.id);
+               window.location = 'auth';
             }
 
         });
