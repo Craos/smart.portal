@@ -68,21 +68,17 @@ let UsuarioLogado = function (user) {
         console.log("  Photo URL: " + profile.photoURL);
     });
 
-    document.getElementById('correiosnologin').style.display = 'none';
-    document.getElementById('correiosnomsg').style.display = 'block';
-    document.getElementById('notificacoesnologin').style.display = 'none';
-    document.getElementById('notificacoesnomsg').style.display = 'block';
+    $('#correiosnologin').hide();
+    $('#notificacoesnologin').hide();
+    $('#correiosnomsg').show(300);
+    $('#notificacoesnomsg').show(300);
+
     document.getElementById('nomecompleto').textContent = user.displayName;
     document.getElementById('primeironome').textContent = user.displayName.split(' ')[0];
-    document.getElementById('nomecompleto').addEventListener("click", teste);
-
-    function teste() {
-        console.clear();
-        console.debug(this);
-    }
 
     if (user.photoURL) {
-        var photoURL = user.photoURL;
+
+        let photoURL = user.photoURL;
         if ((photoURL.indexOf('googleusercontent.com') !== -1) || (photoURL.indexOf('ggpht.com') !== -1)) {
             photoURL = photoURL + '?sz=' + document.getElementById('imgperfil').clientHeight;
         }
@@ -91,6 +87,7 @@ let UsuarioLogado = function (user) {
         document.getElementById('usertb').src = photoURL;
         $('#usertb').show(300);
         document.getElementById('imgperfil').src = photoURL;
+
     }
 
     new MainFeeds();
@@ -180,12 +177,28 @@ function LoginSet() {
             }
 
         });
-
-
     }
 
     return target;
 
+}
+
+function Abrepaginadelogin() {
+
+    $.ajax('./authselect.html',
+        {
+            type: 'GET',
+            data: {},
+            success: function (data) {
+                $(".error_msg").text(data);
+
+                let div1 = document.createElement('div');
+                div1.innerHTML = data;
+                document.getElementById('maincontainer').innerHTML = div1.innerHTML;
+
+            }
+        }
+    );
 }
 
 function showForm(item) {
