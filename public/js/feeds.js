@@ -167,18 +167,31 @@ let MainFeeds = function () {
 
             id = parseInt(id);
             let item = listaitenscondominio.filter(function (item) {
-                    return (item.id === id) ? item: null;
+                return (item.id === id) ? item : null;
             });
 
-            AbreItem(item);
+            if (item.length > 0) {
+                AbreItem(item[0]);
+            }
+
         } else {
             Abrepaginadelogin();
         }
 
     }
 
-    function AbreItem(id) {
+    function AbreItem(item) {
 
+        $.ajax('./html/page_condominio/'+item.form,
+            {
+                type: 'GET',
+                data: {},
+                success: function (data) {
+                    $('#artigos').html(data);
+
+                }
+            }
+        );
 
     }
 
