@@ -26,11 +26,21 @@
             </div>
         </form>
     </div>
-    <div class="row">
+    <div class="row" id="artigosrecentes">
         <h6><strong>Artigos recentes</strong></h6>
-        <div class="row">Sobre fachada do condomínio</div>
-        <div class="row">Guia sobre animais</div>
-        <div class="row">Como lidar com este incoveniente</div>
+        <template id="itemartigorecente">
+            <div class="row u-full-width itemartigosrecentes">
+                <div class="three columns">
+                    <img alt="" id="imgitemartigo" class="u-max-full-width" src="#">
+                </div>
+                <div class="nine columns">
+                    <p><a href="#" id="tituloartigosrecente"></a>
+                        <span id="artigosrecentesresumo"></span>
+                        <cite id="artigosorigem"></cite></p>
+
+                </div>
+            </div>
+        </template>
     </div><br/>
     <div class="row">
         <div class="row"><h6><strong>Fale com o síndico</strong></h6>

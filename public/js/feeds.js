@@ -1,47 +1,74 @@
 let MainFeeds = function () {
 
+    let listafeeds = [
+        {
+            arquivo: './html/feeds/artigo1.html',
+            titulo: 'O que caracteriza Alteração de Fachada do condomínio.',
+            resumo:'Regras que devem ser seguidas para garantir a harmonia estética do condomínio',
+            img:'./html/feeds/fachada_956_667.jpg',
+            lancamento: '12/01/2019',
+            origem: 'por: Oberdan Brito'
+        },
+        {
+            arquivo: './html/feeds/artigo2.html',
+            titulo: 'Guia sobre animais (cães, gatos,..) em condomínio.',
+            resumo:'Cães circulando em áreas coletivas do condomínio e latindo durante a madrugada correspondem a aproximadamente 15% dos conflitos entre moradores.',
+            img:'./html/feeds/cachorro_956_667.jpg',
+            lancamento: '09/02/2019',
+            origem: 'por: Marcos Freitas'
+        },
+        {
+            arquivo: './html/feeds/artigo3.html',
+            titulo: 'Guia sobre Barulho em Condomínios.',
+            resumo:'Todas as informações necessárias sobre barulho de festa, de bagunça de criança nas áreas comuns em horários proibidos',
+            img:'./html/feeds/barulho_956_667.jpg',
+            lancamento: '18/03/2019',
+            origem: 'por: Felipe Farsano'
+        },
+    ];
+
     let listaitenscondominio = [
         {
             id: 1,
             Nome: "Comunicados",
             img: 'fas fa-bell',
-            form: 'page_comunicados.html',
+            arquivo: './html/page_condominio/page_comunicados.html',
         },
         {
             id: 2,
             Nome: "Eventos",
             img: 'far fa-calendar-alt',
-            form: 'page_eventos.html',
+            arquivo: './html/page_condominio/page_eventos.html',
         },
         {
             id: 3,
             Nome: "Assembléias",
             img: 'fas fa-users',
-            form: 'page_comunicados.html',
+            arquivo: './html/page_condominio/page_comunicados.html',
         },
         {
             id: 4,
             Nome: "Manutenções",
             img: 'fas fa-tools',
-            form: 'page_manutencoes.html',
+            arquivo: './html/page_condominio/page_manutencoes.html',
         },
         {
             id: 5,
             Nome: "O condomínio",
             img: 'fas fa-building',
-            form: 'page_condominio.html',
+            arquivo: './html/page_condominio/page_condominio.html',
         },
         {
             id: 6,
             Nome: "Regimentos",
             img: 'fas fa-pencil-ruler',
-            form: 'page_regimento.html',
+            arquivo: './html/page_condominio/page_regimento.html',
         },
         {
             id: 7,
             Nome: "Campanhas",
             img: 'fas fa-ribbon',
-            form: 'page_campanhas.html',
+            arquivo: './html/page_condominio/page_campanhas.html',
         },
     ];
 
@@ -50,43 +77,43 @@ let MainFeeds = function () {
             id: 1,
             Nome: "Solicitações",
             img: 'fas fa-chalkboard-teacher',
-            form: 'form_solicitacoes.html',
+            arquivo: './html/unidade/form_solicitacoes.html',
         },
         {
             id: 2,
             Nome: "Reservas",
             img: 'far fa-calendar-check',
-            form: 'form_reservas.html',
+            arquivo: './html/unidade/form_reservas.html',
         },
         {
             id: 3,
             Nome: "Reformas",
             img: 'fas fa-hammer',
-            form: 'form_reforma.html',
+            arquivo: './html/unidade/form_reforma.html',
         },
         {
             id: 4,
             Nome: "Mudanças",
             img: 'fas fa-truck',
-            form: 'form_mudanca.html',
+            arquivo: './html/unidade/form_mudanca.html',
         },
         {
             id: 5,
             Nome: "Correios",
             img: 'fas fa-envelope-open',
-            form: 'form_correios.html',
+            arquivo: './html/unidade/form_correios.html',
         },
         {
             id: 6,
             Nome: "Notificações",
             img: 'fas fa-comment-alt',
-            form: 'form_notificacoes.html',
+            arquivo: './html/unidade/form_notificacoes.html',
         },
         {
             id: 7,
             Nome: "Aluguel",
             img: 'fas fa-handshake',
-            form: 'form_aluguel.html',
+            arquivo: './html/unidade/form_aluguel.html',
         },
     ];
 
@@ -102,32 +129,67 @@ let MainFeeds = function () {
                 document.getElementById('maincontainer').innerHTML = div1.innerHTML;
 
                 PreparaMenuLateral();
+                PreparaArtigos();
+                PreparaListaRecentes();
 
-                let urls = [
-                    './html/feeds/artigo1.html',
-                    './html/feeds/artigo2.html',
-                    './html/feeds/artigo3.html'
-                ];
 
-                $.each(urls, function (i, u) {
-                    $.ajax(u,
-                        {
-                            type: 'GET',
-                            data: {},
-                            success: function (data) {
-                                $(".error_msg").text(data);
-
-                                let div1 = document.createElement('div');
-                                div1.innerHTML = data;
-
-                                $(div1).appendTo('#artigos').show(400);
-                            }
-                        }
-                    );
-                });
             }
         }
     );
+
+    function PreparaArtigos() {
+
+        $.each(listafeeds, function (i, u) {
+
+            // Abre o arquivo com o artigo
+            // TODO: Verificar o espaçamento entre os artigos
+            if (i < 5) { // Limitado a 5 artigos na página principal
+                $.ajax(u.arquivo,
+                    {
+                        type: 'GET',
+                        data: {},
+                        success: function (data) {
+
+                            let div1 = document.createElement('div');
+                            div1.innerHTML = data;
+                            $(div1).appendTo('#artigos').show(400);
+                        }
+                    }
+                );
+            }
+
+        });
+
+    }
+
+    function PreparaListaRecentes() {
+
+        $.each(listafeeds, function (i, u) {
+
+            if ('content' in document.createElement('template')) {
+
+                let template = document.getElementById('itemartigorecente');
+
+                let clon = template.content.cloneNode(true);
+                clon.getElementById('imgitemartigo').src = u.img;
+
+                let link = clon.getElementById('tituloartigosrecente');
+                link.textContent = u.titulo;
+                link.addEventListener('click', function () {
+                    AbreItem(u);
+                });
+
+                clon.getElementById('artigosrecentesresumo').textContent = u.resumo;
+                clon.getElementById('artigosorigem').textContent = 'Por ' + u.origem + ', em:' + u.lancamento;
+
+                document.getElementById('artigosrecentes').appendChild(clon);
+
+            }
+
+        });
+
+
+    }
 
     function PreparaMenuLateral() {
 
@@ -182,7 +244,9 @@ let MainFeeds = function () {
 
     function AbreItem(item) {
 
-        $.ajax('./html/page_condominio/'+item.form,
+        console.debug(item);
+
+        $.ajax(item.arquivo,
             {
                 type: 'GET',
                 data: {},

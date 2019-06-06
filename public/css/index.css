@@ -203,6 +203,33 @@ form span {
     width: 16px;
 }
 
+.itemartigosrecentes {
+    line-height: normal;
+    display: inline-block;
+    border-bottom: 1px solid lightgrey;
+}
+
+.itemartigosrecentes a {
+    font-size: 1.1em;
+    line-height: normal;
+    display: inline-block;
+    cursor: pointer;
+
+}
+
+.itemartigosrecentes p {
+    color: rgba(98, 98, 98, 0.84);
+    display: inline-block;
+    font-size: 0.85em;
+}
+
+.itemartigosrecentes cite {
+    display: inline-block;
+    font-style: normal;
+    font-size: 0.8em;
+    color: rgba(52, 52, 52, 0.84);
+}
+
 .rodape {
     margin-top: 20px;
     padding: 10px;
