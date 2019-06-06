@@ -47,6 +47,15 @@ form span {
     margin-left: 20px;
 }
 
+/*Convite para logar-se*/
+
+.convitelogin-botao{
+    width: 13em;
+    margin-left: 10px;
+    margin-top: 10px;
+
+}
+
 .header {
     border-top: 3px solid #33C3F0;
     position: fixed;
